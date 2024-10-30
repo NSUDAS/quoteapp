@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 /**
  * Created by S N Shekhar Das on 30/10/24.
- * upay (UCB Fintech Company Limited)
+ *
  */
 
 @HiltViewModel

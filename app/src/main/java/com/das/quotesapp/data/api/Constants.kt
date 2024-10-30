@@ -2,7 +2,7 @@ package com.das.quotesapp.data.api
 
 /**
  * Created by S N Shekhar Das on 30/10/24.
- * upay (UCB Fintech Company Limited)
+ *
  */
 class Constants {
     companion object {

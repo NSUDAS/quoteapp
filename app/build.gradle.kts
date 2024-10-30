@@ -102,5 +102,7 @@ dependencies {
     // Coil
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation ("androidx.navigation:navigation-compose:2.7.7")
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
 
 }

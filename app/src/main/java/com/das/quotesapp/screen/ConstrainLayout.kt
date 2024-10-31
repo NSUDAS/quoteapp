@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.das.quotesapp.R
+import com.das.quotesapp.models.Quote
+import ir.kaaveh.sdpcompose.sdp
 
 /**
  * Created by S N Shekhar Das on 31/10/24.
@@ -187,22 +191,22 @@ fun SocialMediaPost() {
     }
 }
 
-@Preview(showBackground = true, device = "id:pixel_5")
+
 @Composable
-fun CellDesign() {
+fun CellDesign(quote: Quote) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp)
     ) {
-        val (avatar, name, username, moreOptions) = createRefs()
+        val (avatar, name, username, moreOptions, divierLine) = createRefs()
 
         //image
 
         Image(painter = painterResource(id = R.drawable.face), contentDescription = null,
             modifier = Modifier
                 .padding(start = 16.dp)
-                .size(44.dp)
+                .size(44.sdp)
                 .clip(CircleShape)
                 .constrainAs(avatar) {
                     top.linkTo(parent.top)
@@ -211,7 +215,7 @@ fun CellDesign() {
 
         //name
         Text(
-            text = "First Name & Last Name",
+            text = quote.quote,
             style = MaterialTheme.typography.labelLarge,
             color = Color.Magenta,
             modifier = Modifier.constrainAs(name) {
@@ -222,7 +226,7 @@ fun CellDesign() {
 
         //username
         Text(
-            text = "User Name",
+            text = quote.author,
             style = MaterialTheme.typography.titleSmall,
             modifier = Modifier.constrainAs(username) {
                 top.linkTo(name.bottom, margin = 3.dp)
@@ -248,5 +252,16 @@ fun CellDesign() {
             )
 
         }
+
+//        HorizontalDivider(
+//            color = Color.Gray,
+//            modifier = Modifier
+//                .constrainAs(divierLine) {
+//                    top.linkTo(avatar.bottom, margin = 8.dp)
+//                    bottom.linkTo(parent.bottom, margin = 8.dp)
+//                }
+//        )
+
+
     }
 }

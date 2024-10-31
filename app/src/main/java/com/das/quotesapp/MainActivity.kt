@@ -73,6 +73,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.das.quotesapp.include.QuotesState
 import com.das.quotesapp.models.BreedModelItem
+import com.das.quotesapp.navigation.MainNavigation
 import com.das.quotesapp.ui.theme.QuotesAppTheme
 import com.das.quotesapp.viewmodel.BreedViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -82,34 +83,9 @@ class MainActivity : ComponentActivity() {
     private val viewModel : BreedViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             QuotesAppTheme {
-                Surface( modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    val navController = rememberNavController()
-                    val navBackStackEntry by navController.currentBackStackEntryAsState()
-
-                    val currentDestination = navBackStackEntry?.destination
-
-
-
-                    val breekModel by viewModel.response.collectAsState()
-                    Log.d("Das", "onCreate:${breekModel.toString()}")
-                    when(breekModel) {
-                        is QuotesState.Loading -> {
-                            Text("Loading...")
-                        }
-                        is QuotesState.Success -> {
-                            val breedData = (breekModel as QuotesState.Success<BreedModelItem?>).data
-                            Text("Breed data: ${breedData?.name}")
-                        }
-                        is QuotesState.Error -> {
-                            val errorMessage = (breekModel as QuotesState.Error).message
-                            Text("Error: $errorMessage")
-                        }
-                    }
-
-                   }
+                MainNavigation()
                     }
 //                    Scaffold(bottomBar = {
 //                        // Create Bottom Navigation Bar

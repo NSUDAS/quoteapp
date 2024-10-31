@@ -3,6 +3,7 @@ package com.das.quotesapp.di
 import com.das.quotesapp.data.api.ApiService
 import com.das.quotesapp.data.api.Constants.Companion.BASE_URL
 import com.das.quotesapp.data.api.Constants.Companion.BASE_URL_2
+import com.das.quotesapp.data.api.Constants.Companion.MAIN_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +26,8 @@ import java.util.concurrent.TimeUnit
 object NetworkModule {
     @Provides
     fun providesBaseUrl(): String {
-        return BASE_URL_2
+        return MAIN_URL
+
     }
 
     @Provides

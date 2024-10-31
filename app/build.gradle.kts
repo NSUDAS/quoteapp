@@ -70,7 +70,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
     implementation("com.google.dagger:hilt-android:2.50")
+    implementation(libs.firebase.crashlytics.buildtools)
     kapt("com.google.dagger:hilt-android-compiler:2.50")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.2")
@@ -103,6 +105,8 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation ("androidx.navigation:navigation-compose:2.7.7")
     implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
+    implementation ("com.github.Kaaveh:sdp-compose:1.1.0")
 
 
 }

@@ -2,6 +2,7 @@ package com.das.quotesapp.repository
 
 import com.das.quotesapp.data.api.ApiService
 import com.das.quotesapp.models.BreedModelItem
+import com.das.quotesapp.models.QuoteResponseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

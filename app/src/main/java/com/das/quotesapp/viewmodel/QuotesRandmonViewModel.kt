@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.das.quotesapp.include.QuotesState
-import com.das.quotesapp.models.BreedModelItem
 import com.das.quotesapp.models.QuoteResponseModel
 import com.das.quotesapp.repository.BreedRepository
+import com.das.quotesapp.repository.QuotesRadmonRepository
 import com.das.quotesapp.utils.CommonFunction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -16,28 +16,28 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
- * Created by S N Shekhar Das on 30/10/24.
+ * Created by S N Shekhar Das on 31/10/24.
  *
  */
 
 @HiltViewModel
-class BreedViewModel @Inject constructor(
-    private val repository: BreedRepository, @ApplicationContext private val context: Context
+class QuotesRandmonViewModel @Inject constructor(
+    private val repository: QuotesRadmonRepository, @ApplicationContext private val context: Context
 ) : ViewModel() {
-    private val _response: MutableStateFlow<QuotesState<BreedModelItem?>> =
+    private val _response: MutableStateFlow<QuotesState<QuoteResponseModel?>> =
         MutableStateFlow(QuotesState.Loading)
-    val response: MutableStateFlow<QuotesState<BreedModelItem?>> = _response
+    val response: MutableStateFlow<QuotesState<QuoteResponseModel?>> = _response
 
     init {
-        fetchBreedList()
+        fetchAllQuotesList()
 
     }
 
-     fun fetchBreedList() {
+    fun fetchAllQuotesList() {
         viewModelScope.launch {
             if (CommonFunction.isNetworkAvailable(context)) {
                 try {
-                    val response = repository.getBreedList().first()
+                    val response = repository.getAllList().first()
                     _response.emit(QuotesState.Success(response))
 
                 } catch (e: Exception) {
